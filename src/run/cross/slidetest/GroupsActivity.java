@@ -16,17 +16,17 @@ public class GroupsActivity extends Activity implements OnTouchListener ,OnGestu
 	//手势监听
 		GestureDetector mGestureDetector;  
 		
-		private int verticalMinDistance = 20;  
+		private int verticalMinDistance = 50;  
 		private int minVelocity         = 0;  
 		
 		@SuppressWarnings("deprecation")
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
-			setContentView(R.layout.activity_main);
-			
+			setContentView(R.layout.page_second);
+			setTitle("Second");
 			mGestureDetector = new GestureDetector(this);    
-			LinearLayout viewSnsLayout = (LinearLayout)findViewById(R.id.page_first);    
+			LinearLayout viewSnsLayout = (LinearLayout)findViewById(R.id.page_second);    
 	        viewSnsLayout.setOnTouchListener(this);    
 	        viewSnsLayout.setLongClickable(true);    
 		}
@@ -43,15 +43,16 @@ public class GroupsActivity extends Activity implements OnTouchListener ,OnGestu
 		if (e1.getX() - e2.getX() > verticalMinDistance && Math.abs(velocityX) > minVelocity) {  
 			  
 	        // 切换Activity  
-	         Intent intent = new Intent(GroupsActivity.this, MainActivity.class);  
-	         startActivity(intent);  
-			overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+//	         Intent intent = new Intent(GroupsActivity.this, MainActivity.class);  
+//	         startActivity(intent);  
+//			overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
 	        Toast.makeText(this, "向左手势", Toast.LENGTH_SHORT).show();  
 	    } else if (e2.getX() - e1.getX() > verticalMinDistance && Math.abs(velocityX) > minVelocity) {  
 	  
 	        // 切换Activity  
-	        // Intent intent = new Intent(ViewSnsActivity.this, UpdateStatusActivity.class);  
-	        // startActivity(intent);  
+	    	Intent intent = new Intent(GroupsActivity.this, MainActivity.class);  
+	         startActivity(intent);  
+			overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_right);  
 	        Toast.makeText(this, "向右手势", Toast.LENGTH_SHORT).show();  
 	    }  
 		return false;

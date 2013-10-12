@@ -18,7 +18,7 @@ public class MainActivity extends Activity implements OnTouchListener ,OnGesture
 	GestureDetector mGestureDetector;  
 	
 	//滑动距离
-	private int verticalMinDistance = 20;
+	private int verticalMinDistance = 50;
 	//x位移大小
 	private int minVelocity         = 0;  
 	
@@ -27,6 +27,7 @@ public class MainActivity extends Activity implements OnTouchListener ,OnGesture
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		setTitle("First");
 		
 		mGestureDetector = new GestureDetector(this);    
 		RelativeLayout viewSnsLayout = (RelativeLayout)findViewById(R.id.page_first);    
@@ -55,7 +56,8 @@ public class MainActivity extends Activity implements OnTouchListener ,OnGesture
 	        // 切换Activity  
 	         Intent intent = new Intent(MainActivity.this, GroupsActivity.class);  
 	         startActivity(intent);  
-	         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+	         //淡入浅出
+	         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 	        Toast.makeText(this, "向左手势", Toast.LENGTH_SHORT).show();  
 	    } else if (e2.getX() - e1.getX() > verticalMinDistance && Math.abs(velocityX) > minVelocity) {  
 	  
@@ -96,8 +98,5 @@ public class MainActivity extends Activity implements OnTouchListener ,OnGesture
 	public boolean onTouch(View v, MotionEvent event) {
 		return mGestureDetector.onTouchEvent(event);  
 	}
-
-	
-
 	
 }
