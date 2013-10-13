@@ -52,7 +52,7 @@ public class GroupsActivity extends Activity implements OnTouchListener ,OnGestu
 	        // «–ªªActivity  
 	    	Intent intent = new Intent(GroupsActivity.this, MainActivity.class);  
 	         startActivity(intent);  
-			overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_right);  
+			overridePendingTransition(R.anim.right_in, R.anim.right_out);  
 	        Toast.makeText(this, "œÚ”“ ÷ ∆", Toast.LENGTH_SHORT).show();  
 	    }  
 		return false;
